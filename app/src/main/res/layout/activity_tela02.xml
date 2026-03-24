@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3BFFE5"
     android:orientation="vertical"
     tools:context=".Tela02">
 
@@ -60,6 +61,12 @@
                 android:inputType="text" />
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/images_removebg_preview_9" />
     </LinearLayout>
 
     <LinearLayout
@@ -73,7 +80,7 @@
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ir"
+            android:text="Começar"
             android:textSize="34sp" />
     </LinearLayout>
 </LinearLayout>
