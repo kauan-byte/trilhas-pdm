@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3BFFE5"
+    android:background="#F5F8F8"
     android:orientation="vertical"
     tools:context=".Tela02">
 
@@ -62,11 +62,6 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView10"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/images_removebg_preview_9" />
     </LinearLayout>
 
     <LinearLayout

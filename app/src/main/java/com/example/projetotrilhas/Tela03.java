@@ -184,5 +184,50 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
 
             }
         }
+        if(v == img5){
+            img5.setImageResource(lista.get(4));
+            if(contaToque==1){
+                imgPrimeiroToque = img5;
+                imagemPrimeiroToque = lista.get(4);
+            }else{
+                imgSegundoToque = img5;
+                imagemSegundoToque = lista.get(4);
+                compara(imagemPrimeiroToque, imagemSegundoToque);
+            }
+        }
+        if(v == img6){
+            img6.setImageResource(lista.get(5));
+            if(contaToque==1){
+                imgPrimeiroToque = img6;
+                imagemPrimeiroToque = lista.get(5);
+            }else{
+                imgSegundoToque = img6;
+                imagemSegundoToque = lista.get(5);
+                compara(imagemPrimeiroToque, imagemSegundoToque);
+            }
+        }
+        if(v == img7){
+            img7.setImageResource(lista.get(6));
+            if(contaToque==1){
+                imgPrimeiroToque = img7;
+                imagemPrimeiroToque = lista.get(6);
+            }else{
+                imgSegundoToque = img7;
+                imagemSegundoToque = lista.get(6);
+                compara(imagemPrimeiroToque, imagemSegundoToque);
+            }
+        }
+        if(v == img8){
+            img8.setImageResource(lista.get(7));
+            if(contaToque==1){
+                imgPrimeiroToque = img8;
+                imagemPrimeiroToque = lista.get(7);
+            }else{
+                imgSegundoToque = img8;
+                imagemSegundoToque = lista.get(7);
+                compara(imagemPrimeiroToque, imagemSegundoToque);
+            }
+        }
+
     }
 }
