@@ -8,11 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,14 +37,14 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
                 texto.setText(x);
             }
         }
-        img1 = findViewById(R.id.imageView2);
-        img2 = findViewById(R.id.imageView3);
-        img3 = findViewById(R.id.imageView4);
-        img4 = findViewById(R.id.imageView5);
-        img5 = findViewById(R.id.imageView6);
-        img6 = findViewById(R.id.imageView7);
-        img7 = findViewById(R.id.imageView8);
-        img8 = findViewById(R.id.imageView9);
+        img1 = findViewById(R.id.imageView1);
+        img2 = findViewById(R.id.imageView2);
+        img3 = findViewById(R.id.imageView3);
+        img4 = findViewById(R.id.imageView4);
+        img5 = findViewById(R.id.imageView5);
+        img6 = findViewById(R.id.imageView6);
+        img7 = findViewById(R.id.imageView7);
+        img8 = findViewById(R.id.imageView8);
         img1.setOnClickListener(this);
         img2.setOnClickListener(this);
         img3.setOnClickListener(this);
@@ -67,15 +63,23 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
         img8.setEnabled(false);
 
         lista = new ArrayList<Integer>();
-        lista.add(R.drawable.ic_action_name_3);
-        lista.add(R.drawable.ic_action_name_3);
-        lista.add(R.drawable.ic_action_name_4);
-        lista.add(R.drawable.ic_action_name_4);
+        lista.add(R.drawable.timao3_9);
+        lista.add(R.drawable.timao3_9);
+        lista.add(R.drawable.gavioes_9);
+        lista.add(R.drawable.gavioes_9);
+        lista.add(R.drawable.timao2_9);
+        lista.add(R.drawable.timao2_9);
+        lista.add(R.drawable.sem_ttulo_9);
+        lista.add(R.drawable.sem_ttulo_9);
         Collections.shuffle(lista);
         img1.setImageResource(lista.get(0));
         img2.setImageResource(lista.get(1));
         img3.setImageResource(lista.get(2));
         img4.setImageResource(lista.get(3));
+        img5.setImageResource(lista.get(4));
+        img6.setImageResource(lista.get(5));
+        img7.setImageResource(lista.get(6));
+        img8.setImageResource(lista.get(7));
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -84,10 +88,18 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
                 img2.setImageResource(R.drawable.ic_action_name_2);
                 img3.setImageResource(R.drawable.ic_action_name_2);
                 img4.setImageResource(R.drawable.ic_action_name_2);
+                img5.setImageResource(R.drawable.ic_action_name_2);
+                img6.setImageResource(R.drawable.ic_action_name_2);
+                img7.setImageResource(R.drawable.ic_action_name_2);
+                img8.setImageResource(R.drawable.ic_action_name_2);
                 img1.setEnabled(true);
                 img2.setEnabled(true);
                 img3.setEnabled(true);
                 img4.setEnabled(true);
+                img5.setEnabled(true);
+                img6.setEnabled(true);
+                img7.setEnabled(true);
+                img8.setEnabled(true);
 
 
             }
