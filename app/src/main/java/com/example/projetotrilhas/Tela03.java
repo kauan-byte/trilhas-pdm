@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Tela03 extends AppCompatActivity implements View.OnClickListener {
+    private Button btnReiniciar;
     private ImageView img1, img2, img3, img4, img5, img6, img7, img8, imgPrimeiroToque, imgSegundoToque;
     private int imagemPrimeiroToque, imagemSegundoToque, contaToque;
     private TextView texto;
@@ -37,6 +39,16 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
                 texto.setText(x);
             }
         }
+
+        btnReiniciar = findViewById(R.id.btnReiniciar);
+
+        btnReiniciar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reiniciarJogo();
+            }
+        });
+
         img1 = findViewById(R.id.imageView1);
         img2 = findViewById(R.id.imageView2);
         img3 = findViewById(R.id.imageView3);
@@ -230,4 +242,77 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
         }
 
     }
+
+    public void reiniciarJogo() {
+
+        contaToque = 0;
+
+        // Reset cores
+        img1.setBackgroundColor(Color.WHITE);
+        img2.setBackgroundColor(Color.WHITE);
+        img3.setBackgroundColor(Color.WHITE);
+        img4.setBackgroundColor(Color.WHITE);
+        img5.setBackgroundColor(Color.WHITE);
+        img6.setBackgroundColor(Color.WHITE);
+        img7.setBackgroundColor(Color.WHITE);
+        img8.setBackgroundColor(Color.WHITE);
+
+        // Recria lista
+        lista.clear();
+        lista.add(R.drawable.timao3_9);
+        lista.add(R.drawable.timao3_9);
+        lista.add(R.drawable.gavioes_9);
+        lista.add(R.drawable.gavioes_9);
+        lista.add(R.drawable.timao2_9);
+        lista.add(R.drawable.timao2_9);
+        lista.add(R.drawable.sem_ttulo_9);
+        lista.add(R.drawable.sem_ttulo_9);
+
+        Collections.shuffle(lista);
+
+        // Mostra imagens
+        img1.setImageResource(lista.get(0));
+        img2.setImageResource(lista.get(1));
+        img3.setImageResource(lista.get(2));
+        img4.setImageResource(lista.get(3));
+        img5.setImageResource(lista.get(4));
+        img6.setImageResource(lista.get(5));
+        img7.setImageResource(lista.get(6));
+        img8.setImageResource(lista.get(7));
+
+        // Desativa clique
+        img1.setEnabled(false);
+        img2.setEnabled(false);
+        img3.setEnabled(false);
+        img4.setEnabled(false);
+        img5.setEnabled(false);
+        img6.setEnabled(false);
+        img7.setEnabled(false);
+        img8.setEnabled(false);
+
+        // Espera e vira tudo
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                img1.setImageResource(R.drawable.ic_action_name_2);
+                img2.setImageResource(R.drawable.ic_action_name_2);
+                img3.setImageResource(R.drawable.ic_action_name_2);
+                img4.setImageResource(R.drawable.ic_action_name_2);
+                img5.setImageResource(R.drawable.ic_action_name_2);
+                img6.setImageResource(R.drawable.ic_action_name_2);
+                img7.setImageResource(R.drawable.ic_action_name_2);
+                img8.setImageResource(R.drawable.ic_action_name_2);
+
+                img1.setEnabled(true);
+                img2.setEnabled(true);
+                img3.setEnabled(true);
+                img4.setEnabled(true);
+                img5.setEnabled(true);
+                img6.setEnabled(true);
+                img7.setEnabled(true);
+                img8.setEnabled(true);
+            }
+        }, 3000);
+    }
+
 }
