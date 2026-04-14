@@ -5,40 +5,44 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8EFEF"
+    android:background="#000000"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="0.5"
-        android:gravity="start"
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Jogo da Memória"
-            android:textColor="#000000"
-            android:textSize="34sp" />
+            android:text="JOGO DA\nMEMÓRIA\nS.C.C.P"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="0.5"
         android:gravity="center"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:background="#620E0E"
-            android:text="Entrar"
-            android:textSize="34sp" />
+            android:backgroundTint="#FFFFFF"
+            android:text="ENTRAR"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

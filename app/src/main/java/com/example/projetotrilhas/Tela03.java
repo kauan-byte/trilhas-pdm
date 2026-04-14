@@ -18,7 +18,9 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
     private Button btnReiniciar;
     private ImageView img1, img2, img3, img4, img5, img6, img7, img8, imgPrimeiroToque, imgSegundoToque;
     private int imagemPrimeiroToque, imagemSegundoToque, contaToque;
-    private TextView texto;
+    private int paresEncontrados = 0; // Você explica que adicionou para saber quando o jogo acaba
+    private int contadorReiniciar = 0; // Você explica que adicionou para o novo requisito do contador
+    private TextView texto, tvContador;
     private ArrayList<Integer> lista;
 
     @Override
@@ -27,20 +29,23 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_tela03);
 
         texto = findViewById(R.id.textView3);
+        tvContador = findViewById(R.id.tvContador); // Novo campo
+
         Intent i = new Intent();
         i = getIntent();
         if(i != null){
-            //significa que não veio corrompido
             Bundle caixa = new Bundle();
             caixa = i.getExtras();
             if(caixa != null){
-                //significa que a caixa não veio corrompida
                 String x = caixa.getString("nome");
                 texto.setText(x);
             }
         }
 
         btnReiniciar = findViewById(R.id.btnReiniciar);
+        // O botão e o texto começam invisíveis para não atrapalhar o layout
+        btnReiniciar.setVisibility(View.GONE);
+        tvContador.setVisibility(View.GONE);
 
         btnReiniciar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +62,7 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
         img6 = findViewById(R.id.imageView6);
         img7 = findViewById(R.id.imageView7);
         img8 = findViewById(R.id.imageView8);
+
         img1.setOnClickListener(this);
         img2.setOnClickListener(this);
         img3.setOnClickListener(this);
@@ -65,6 +71,7 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
         img6.setOnClickListener(this);
         img7.setOnClickListener(this);
         img8.setOnClickListener(this);
+
         img1.setEnabled(false);
         img2.setEnabled(false);
         img3.setEnabled(false);
@@ -84,6 +91,7 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
         lista.add(R.drawable.sem_ttulo_9);
         lista.add(R.drawable.sem_ttulo_9);
         Collections.shuffle(lista);
+
         img1.setImageResource(lista.get(0));
         img2.setImageResource(lista.get(1));
         img3.setImageResource(lista.get(2));
@@ -92,6 +100,7 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
         img6.setImageResource(lista.get(5));
         img7.setImageResource(lista.get(6));
         img8.setImageResource(lista.get(7));
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -112,23 +121,28 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
                 img6.setEnabled(true);
                 img7.setEnabled(true);
                 img8.setEnabled(true);
-
-
             }
         }, 3000);
+
         imgPrimeiroToque = new ImageView(this);
         imgSegundoToque = new ImageView(this);
         contaToque = 0;
     }
+
     public void compara(int imagem1, int imagem2){
         contaToque=0;
         if(imagem1 == imagem2){
-              imgPrimeiroToque.setEnabled(false);
-              imgPrimeiroToque.setBackgroundColor(Color.GREEN);
-              imgSegundoToque.setEnabled(false);
-              imgSegundoToque.setBackgroundColor(Color.GREEN);
-    }else
-        {
+            imgPrimeiroToque.setEnabled(false);
+            imgPrimeiroToque.setBackgroundColor(Color.GREEN);
+            imgSegundoToque.setEnabled(false);
+            imgSegundoToque.setBackgroundColor(Color.GREEN);
+
+            paresEncontrados++; // Lógica para o botão aparecer
+            if(paresEncontrados == 4) {
+                btnReiniciar.setVisibility(View.VISIBLE);
+                tvContador.setVisibility(View.VISIBLE);
+            }
+        }else {
             imgPrimeiroToque.setBackgroundColor(Color.RED);
             imgSegundoToque.setBackgroundColor(Color.RED);
             Handler h = new Handler();
@@ -143,7 +157,6 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
             }, 2000);
         }
     }
-
 
     @Override
     public void onClick(View v) {
@@ -169,7 +182,6 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
                 imgSegundoToque = img2;
                 imagemSegundoToque = lista.get(1);
                 compara(imagemPrimeiroToque, imagemSegundoToque);
-
             }
         }
         if(v == img3){
@@ -181,7 +193,6 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
                 imgSegundoToque = img3;
                 imagemSegundoToque = lista.get(2);
                 compara(imagemPrimeiroToque, imagemSegundoToque);
-
             }
         }
         if(v == img4){
@@ -193,7 +204,6 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
                 imgSegundoToque = img4;
                 imagemSegundoToque = lista.get(3);
                 compara(imagemPrimeiroToque, imagemSegundoToque);
-
             }
         }
         if(v == img5){
@@ -240,14 +250,22 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
                 compara(imagemPrimeiroToque, imagemSegundoToque);
             }
         }
-
     }
 
     public void reiniciarJogo() {
+        // Incrementa o contador de reinícios
+        contadorReiniciar++;
+        tvContador.setText("Reinícios: " + contadorReiniciar);
 
+        // Reseta as variáveis de controle
+        paresEncontrados = 0;
         contaToque = 0;
 
-        // Reset cores
+        // Esconde o botão e o contador para a nova partida
+        btnReiniciar.setVisibility(View.GONE);
+        tvContador.setVisibility(View.GONE);
+
+        // Reset cores (Igual ao seu original)
         img1.setBackgroundColor(Color.WHITE);
         img2.setBackgroundColor(Color.WHITE);
         img3.setBackgroundColor(Color.WHITE);
@@ -257,7 +275,7 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
         img7.setBackgroundColor(Color.WHITE);
         img8.setBackgroundColor(Color.WHITE);
 
-        // Recria lista
+        // Recria lista (Igual ao seu original)
         lista.clear();
         lista.add(R.drawable.timao3_9);
         lista.add(R.drawable.timao3_9);
@@ -270,7 +288,7 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
 
         Collections.shuffle(lista);
 
-        // Mostra imagens
+        // Mostra imagens (Igual ao seu original)
         img1.setImageResource(lista.get(0));
         img2.setImageResource(lista.get(1));
         img3.setImageResource(lista.get(2));
@@ -280,7 +298,7 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
         img7.setImageResource(lista.get(6));
         img8.setImageResource(lista.get(7));
 
-        // Desativa clique
+        // Desativa clique (Igual ao seu original)
         img1.setEnabled(false);
         img2.setEnabled(false);
         img3.setEnabled(false);
@@ -290,7 +308,7 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
         img7.setEnabled(false);
         img8.setEnabled(false);
 
-        // Espera e vira tudo
+        // Espera e vira tudo (Igual ao seu original)
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -314,5 +332,4 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener {
             }
         }, 3000);
     }
-
 }
